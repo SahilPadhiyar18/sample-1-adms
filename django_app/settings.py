@@ -67,11 +67,13 @@ WSGI_APPLICATION = 'django_app.wsgi.application'
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 if DEVELOPMENT_MODE is True:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'defaultdb',
+        'USER': 'doadmin',
+        'PASSWORD': 'AVNS_nUI9lXoTG3V2MaJ7jjw',
+        'HOST': 'db-postgresql-adms-do-user-12454574-0.b.db.ondigitalocean.com',
+        'PORT': '25060',
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
